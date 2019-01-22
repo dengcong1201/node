@@ -1,0 +1,70 @@
+/* 公用样式 */
+html,body {
+  height: 100%;
+}
+body {
+  display: flex;
+}
+.layout-side {
+  /* 不被压迫 */
+  flex-shrink: 0;
+  width: 256px;
+  height: 100%;
+  background: palevioletred;
+}
+.layout-main {
+  flex: 1;
+  background: yellowgreen;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-header {
+  height: 100px;
+  background: pink;
+}
+
+.layout-body {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.layout-side li {
+  height: 80px;
+  line-height: 80px;
+  border-bottom: 1px solid rebeccapurple;
+  text-align: center;
+  font-size: 24px;
+}
+.layout-side li a {
+  color: aquamarine;
+}
+
+/* ****************** */
+.dc-table {
+  border: 1px solid red;
+  width: 100%;
+  font-size: 20px;
+  color: yellow;
+  
+}
+.dc-table a{
+  color: yellow;
+}
+.dc-table th,
+.dc-table td {
+  border: 1px solid red;
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+}
+.dc-table #banner-img {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  display: block;
+}
+
+.navfen {
+ margin-left: 655px;
+}
