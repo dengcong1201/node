@@ -6,6 +6,8 @@ const app = express();
 
 //引入的路由中间的文件
 const indexRouter = require('./routes/index');
+const bannerRouter = require('./routes/banner');
+
 
 //设置 静态文件托管
 app.use(express.static(path.resolve(__dirname,'./public')));
@@ -21,7 +23,7 @@ app.set('view engine','ejs');
 
 //路由中间件的使用
 app.use('/',indexRouter);
-
+app.use('/banner',bannerRouter);
 
 
 app.listen(3000);
