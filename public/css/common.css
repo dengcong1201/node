@@ -41,22 +41,32 @@ body {
 }
 
 /* ****************** */
-.dc-table {
-  border: 1px solid red;
+.dc-table,
+.layui-table {
+  /* border: 1px solid red; */
   width: 100%;
-  font-size: 20px;
-  color: yellow;
   
+  color: red;
+  background: yellowgreen;
 }
-.dc-table a{
-  color: yellow;
+.dc-table a,
+.layui-table a{
+  color: red;
 }
-.dc-table th,
-.dc-table td {
-  border: 1px solid red;
+.layui-table th {
+  width: 25%;
+  height: 100px;
+  background: yellowgreen;
+  text-align: center;
+  font-size: 24px;
+}
+.layui-table td {
+  /* border: 1px solid red; */
+  width: 25%;
   height: 200px;
   line-height: 200px;
   text-align: center;
+  font-size: 24px;
 }
 .dc-table #banner-img {
   width: 100px;
