@@ -5,8 +5,8 @@ const cookieParser = require('cookie-parser');
 const app = express();
 
 //引入的路由中间的文件
-const indexRouter = require('./routes/index');
-const bannerRouter = require('./routes/banner');
+const indexRouter = require('./routes/indexRouter');
+const bannerRouter = require('./routes/bannerRouter');
 
 
 //设置 静态文件托管
