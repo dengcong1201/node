@@ -19,7 +19,7 @@
   <div class="layout-main">
     <%- include('./common/header.ejs') %>
     <div class="layout-body">
-      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">添加</button>
+      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">添加</button>
       <!-- <table class="dc-table">
         <thead>
           <tr>
@@ -79,8 +79,8 @@
 
 
       <nav aria-label="Page navigation" class="navfen">
-        <ul class="pagination">
-          <li>
+        <ul id="pagination" class="pagination">
+          <!-- <li>
             <a href="#" aria-label="Previous">
               <span aria-hidden="true">&laquo;</span>
             </a>
@@ -94,12 +94,12 @@
             <a href="#" aria-label="Next">
               <span aria-hidden="true">&raquo;</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
 
       <!-- 新增banner -->
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
