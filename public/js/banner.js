@@ -23,28 +23,64 @@
   //新增的方法
   Banner.prototype.add = function () {
     var that = this;
-    $.post('/banner/add', {
-      bannerName: this.dom.nameInput.val(),
-      bannerUrl: this.dom.urlInput.val()
-    }, function (res) {
-      console.log(res);
-      if (res.code === 0) {
-        //成功
-        layer.msg('添加成功');
-        
-        //请求一下数据
-        that.search();
-      } else {
-        //ps:很多时候，真正的错误信息不会给用户去看
+    //ajax提交，并且带有文件
 
+    //1、实例化一个FormData对象
+    var formData = new FormData();
+
+    //2、给formData 对象 加属性
+    formData.append('bannerName',this.dom.nameInput.val());
+    formData.append('bannerImg',this.dom.urlInput[0],files[0]);
+
+    $.ajax({
+      url:'/banner/add',
+      method:'POST',
+      contentType:false,
+      processData:false,
+      data:formData,
+      success:function(){
+        layer.msg('添加成功');
+        that.search();
+      },
+      error:function(){
+        console.log(error.message);
         layer.msg('网络异常，请稍后重试');
+      },
+      complete:function(){
+        //不管失败还是成功，都会进入的一个回调函数
+         //手动调用关闭的方法
+        that.dom.addModel.modal('hide');
+       //手动清空输入框的内容
+        that.dom.nameInput.val('');
+        that.dom.urlInput.val('');
       }
-      //手动调用关闭的方法
-      that.dom.addModel.modal('hide');
-      //手动清空输入框的内容
-      that.dom.nameInput.val('');
-      that.dom.urlInput.val('');
-    });
+    })
+
+
+
+
+    // $.post('/banner/add', {
+    //   bannerName: this.dom.nameInput.val(),
+    //   bannerUrl: this.dom.urlInput.val()
+    // }, function (res) {
+    //   console.log(res);
+    //   if (res.code === 0) {
+    //     //成功
+    //     layer.msg('添加成功');
+        
+    //     //请求一下数据
+    //     that.search();
+    //   } else {
+    //     //ps:很多时候，真正的错误信息不会给用户去看
+
+    //     layer.msg('网络异常，请稍后重试');
+    //   }
+    //   //手动调用关闭的方法
+    //   that.dom.addModel.modal('hide');
+    //   //手动清空输入框的内容
+    //   that.dom.nameInput.val('');
+    //   that.dom.urlInput.val('');
+    // });
   }
 
   //查询的方法
@@ -89,8 +125,8 @@
                alt="">
             </td>
             <td>
-              <a href="javascript:;">删除</a>
-              <a href="javascript:;">修改</a>
+              <a class = "delete" data-id = "${item._id}" href="javascript:;">删除</a>
+              <a class = "update" data-id = "${item._id}" href="javascript:;">修改</a>
             </td>
           </tr>
          `
@@ -163,6 +199,18 @@
       //3、再次调用一下this.search
       that.search();
 
+    })
+    //删除按钮点击
+    this.dom.table.on('click','.delete',function(){
+      //1、得到id
+      var id = $(this).data('id');
+
+      //2、二次确认框
+      layer.confirm('确认删除么', function(){
+        console.log('确认');
+      },function(){
+        console.log('取消');
+      })
     })
   }
   //最后

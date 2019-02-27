@@ -7,6 +7,7 @@ const app = express();
 //引入的路由中间的文件
 const indexRouter = require('./routes/indexRouter');
 const bannerRouter = require('./routes/bannerRouter');
+const userRouter = require('./routes/userRouter');
 
 
 //设置 静态文件托管
@@ -21,9 +22,17 @@ app.use(express.urlencoded({extended:true}));
 app.set('views',path.resolve(__dirname,'./views'));
 app.set('view engine','ejs');
 
+// 处理跨域的一个中间件
+app.use(function (req,res,next){
+  //解决跨域的问题
+  res.set('Access-Control-Allow-Origin','*');
+  res.set('Access-Control-Allow-Headers','Content-Type');
+  next();
+})
+
 //路由中间件的使用
 app.use('/',indexRouter);
 app.use('/banner',bannerRouter);
-
+app.use('/user',userRouter);
 
 app.listen(3000);

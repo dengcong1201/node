@@ -1,0 +1,23 @@
+# multer的使用步骤
+
+1、安装
+
+npm install multer --save
+
+2、在哪个地方要用到文件上传
+const multer  = require('multer');
+
+//指定文件上传之后的一个存放目录
+const upload = multer({
+  dest:'c:/tmp'
+})
+
+//abcefg是你上传的字段名  就是input type=file的name的值
+app.post('/upload',upload.single('abcefg'),(req,res) => {
+  //之后在这里会得到req.file or req.files 属性
+
+})
+
+app.post('/uploadMany',upload.array('abcefg',3),(req,res) => {
+  //req.files
+})

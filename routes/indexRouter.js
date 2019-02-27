@@ -10,6 +10,11 @@ router.get('/',(req,res) => {
 //banner 页面
 router.get('/banner.html',(req,res) => {
   res.render('banner');
+});
+
+//登录页面
+router.get('/login.html',(req,res) => {
+  res.render('login');
 })
 
 module.exports = router;
